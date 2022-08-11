@@ -24,15 +24,6 @@ def crop_from_img(img: np.array):
     mid_cord = result[0][int(len(result[0])//2)]
     return img[abs(mid_cord-15):mid_cord+15, 0:100]
 
-def img_Contrast(img):
-    lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
-    l, a, b = cv2.split(lab)
-    clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8, 8))
-    cl = clahe.apply(l)
-    limg = cv2.merge((cl, a, b))
-    final = cv2.cvtColor(limg, cv2.COLOR_LAB2BGR)
-    return final
-
 def solve_cap(filename):
     path = 'images/{}.png'.format(filename)
 
